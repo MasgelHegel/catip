@@ -1,6 +1,17 @@
 import { useState, useEffect } from 'react'
 import catipLogo from './assets/catip.png'
+import catipLogoWebp from './assets/catip.webp'
 import './App.css'
+
+// Helper — renders <picture> with WebP + PNG fallback
+function Logo({ className, alt, width, height }) {
+  return (
+    <picture>
+      <source srcSet={catipLogoWebp} type="image/webp" />
+      <img src={catipLogo} alt={alt} className={className} width={width} height={height} />
+    </picture>
+  )
+}
 
 // ─── Loading Screen ───────────────────────────────────────────────────────────
 function LoadingScreen({ onDone }) {
@@ -18,7 +29,7 @@ function LoadingScreen({ onDone }) {
     <div className={`loading-screen ${fadeOut ? 'fade-out' : ''}`}>
       <div className="loading-inner">
         <div className="loading-logo-wrap">
-          <img src={catipLogo} alt="Cati'p Logo" className="loading-logo" />
+          <Logo src={catipLogo} alt="Cati'p Logo" className="loading-logo" />
         </div>
         <div className="loading-brand">
           <span className="loading-c">C</span>ati&apos;p
@@ -42,7 +53,7 @@ function Navbar() {
     <nav className="navbar">
       <div className="navbar-inner">
         <div className="navbar-logo">
-          <img src={catipLogo} alt="Cati'p" className="nav-logo-img" />
+          <Logo alt="Cati'p" className="nav-logo-img" />
           <span className="nav-brand"><span className="red">C</span>ati&apos;p</span>
         </div>
 
@@ -117,7 +128,7 @@ function Hero() {
 
         <div className="hero-logo-wrap">
           <div className="hero-logo-card">
-            <img src={catipLogo} alt="Cati'p mascot" className="hero-logo-img" />
+            <Logo alt="Cati'p mascot" className="hero-logo-img" />
           </div>
           <div className="hero-sticker hero-sticker-1">Siap Antar! </div>
           <div className="hero-sticker hero-sticker-2">Harga Oke! </div>
@@ -273,7 +284,7 @@ function CTABanner() {
     <section className="cta-section" id="kontak">
       <div className="cta-inner">
         <div className="cta-logo">
-          <img src={catipLogo} alt="Cati'p" className="cta-logo-img" />
+          <Logo alt="Cati'p" className="cta-logo-img" />
         </div>
         <div className="cta-text">
           <h2 className="cta-title">Udah, mager aja!</h2>
@@ -298,7 +309,7 @@ function Footer() {
     <footer className="footer">
       <div className="footer-inner">
         <div className="footer-brand">
-          <img src={catipLogo} alt="Cati'p" className="footer-logo" />
+          <Logo alt="Cati'p" className="footer-logo" />
           <div>
             <div className="footer-name"><span className="red">C</span>ati&apos;p</div>
             <div className="footer-tagline">Cakung Nitip</div>
